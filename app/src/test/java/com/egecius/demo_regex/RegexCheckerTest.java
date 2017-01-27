@@ -25,7 +25,7 @@ public class RegexCheckerTest {
 	public static final String REGEX_FOR_6 = "6.*";
 	public static final String REGEX_FOR_7 = "7.*";
 
-	public static final String REGEX_FOR_4_3_AND_ABOVE = "(4\\.[3-4].*|[5-7].*)";
+	public static final String REGEX_FOR_4_3_AND_ABOVE_OS_VERSION = "(4\\.[3-4].*|[5-7].*)";
 
 	RegexChecker checker = new RegexChecker();
 
@@ -86,13 +86,13 @@ public class RegexCheckerTest {
 
 	@Test
 	public void checksOSVersionsCorrectly() {
-		List<String> unmatching = checker.getUnmatchingVersions(REGEX_FOR_4_3_AND_ABOVE, os4_3_andAbove);
+		List<String> unmatching = checker.getUnmatchingVersions(REGEX_FOR_4_3_AND_ABOVE_OS_VERSION, os4_3_andAbove);
 		assertThat(unmatching).isEmpty();
 	}
 
 	@Test
 	public void checksOSVersionsFailsForVersion_4_2_andAbove() {
-		List<String> unmatching = checker.getUnmatchingVersions(REGEX_FOR_4_3_AND_ABOVE, os4_0_andAbove);
+		List<String> unmatching = checker.getUnmatchingVersions(REGEX_FOR_4_3_AND_ABOVE_OS_VERSION, os4_0_andAbove);
 		assertThat(unmatching.size()).isEqualTo(4);
 		assertThat(unmatching.get(0)).isEqualTo("4.0");
 		assertThat(unmatching.get(1)).isEqualTo("4.1");
