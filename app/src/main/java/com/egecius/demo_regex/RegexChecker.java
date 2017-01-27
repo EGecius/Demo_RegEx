@@ -9,20 +9,7 @@ import java.util.List;
  */
 final class RegexChecker {
 
-
-	boolean doesMatchEveryOs(String regEx, List<String> osVersions) {
-		for (final String osVersion : osVersions) {
-			boolean matches = osVersion.matches(regEx);
-			if (!matches) {
-				return false;
-			}
-		}
-
-		return true;
-	}
-
-
-	List<String> getunmatchingAppVersions(final String regEx, final List<String> appVersion) {
+	List<String> getUnmatchingVersions(final String regEx, final List<String> appVersion) {
 
 		List<String> unmatchingVersions = new ArrayList<>();
 
