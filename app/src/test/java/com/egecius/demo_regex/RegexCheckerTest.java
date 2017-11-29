@@ -86,13 +86,13 @@ public class RegexCheckerTest {
 
 	@Test
 	public void checksOSVersionsCorrectly() {
-		List<String> unmatching = checker.getUnmatchingVersions(REGEX_FOR_4_3_AND_ABOVE_OS_VERSION, os4_3_andAbove);
+		List<String> unmatching = checker.getMismatchingVersions(REGEX_FOR_4_3_AND_ABOVE_OS_VERSION, os4_3_andAbove);
 		assertThat(unmatching).isEmpty();
 	}
 
 	@Test
 	public void checksOSVersionsFailsForVersion_4_2_andAbove() {
-		List<String> unmatching = checker.getUnmatchingVersions(REGEX_FOR_4_3_AND_ABOVE_OS_VERSION, os4_0_andAbove);
+		List<String> unmatching = checker.getMismatchingVersions(REGEX_FOR_4_3_AND_ABOVE_OS_VERSION, os4_0_andAbove);
 		assertThat(unmatching.size()).isEqualTo(4);
 		assertThat(unmatching.get(0)).isEqualTo("4.0");
 		assertThat(unmatching.get(1)).isEqualTo("4.1");
@@ -102,20 +102,20 @@ public class RegexCheckerTest {
 
 	@Test
 	public void matchesAppVersion_6_0_0() {
-		List<String> unmatching = checker.getUnmatchingVersions(REGEX_FOR_6_0_0_APP_VERSION, appVersion_6_0_0);
+		List<String> unmatching = checker.getMismatchingVersions(REGEX_FOR_6_0_0_APP_VERSION, appVersion_6_0_0);
 		assertThat(unmatching).isEmpty();
 	}
 
 
 	@Test
 	public void matchesAppVersion_5() {
-		List<String> unmatching = checker.getUnmatchingVersions(REGEX_FOR_5_APP_VERSION, appVersions_5);
+		List<String> unmatching = checker.getMismatchingVersions(REGEX_FOR_5_APP_VERSION, appVersions_5);
 		assertThat(unmatching).isEmpty();
 	}
 	
 	@Test
 	public void failsMatchingWhenVersions5And6ArePutTogether() {
-		List<String> unmatching = checker.getUnmatchingVersions(REGEX_FOR_5_APP_VERSION, appVersions_5_and_6_1_0);
+		List<String> unmatching = checker.getMismatchingVersions(REGEX_FOR_5_APP_VERSION, appVersions_5_and_6_1_0);
 		assertThat(unmatching.size()).isEqualTo(1);
 		assertThat(unmatching.get(0)).isEqualTo("6.1.0");
 	}
@@ -125,7 +125,7 @@ public class RegexCheckerTest {
 		//WHEN
 
 
-		List<String> unmatching = checker.getUnmatchingVersions(REGEX_FOR_5_AND_6_0_APP_VERSION, appVersions_5_and_6_0_0);
+		List<String> unmatching = checker.getMismatchingVersions(REGEX_FOR_5_AND_6_0_APP_VERSION, appVersions_5_and_6_0_0);
 		assertThat(unmatching).isEmpty();
 
 
