@@ -5,7 +5,6 @@ public class FindAndReplacePractice {
     private void withRegex() {
 
 
-
       // Replace this
 //        model.put('foo', 'bar')
     // With this
